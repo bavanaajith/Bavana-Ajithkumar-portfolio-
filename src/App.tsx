@@ -186,7 +186,7 @@ export default function App() {
 
                 <div className="relative w-full h-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] z-20 border-white border-[12px]">
                   <img 
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" 
+                    src="/images/profile.jpeg" 
                     alt="Bavana Ajithkumar" 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -269,12 +269,12 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
             {[
-              { img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800", tag: "Food Branding", title: "Chimac & Anjappar" },
-              { img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800", tag: "Fashion Story", title: "Irish Label Collaborations" },
-              { img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800", tag: "Lifestyle", title: "The Exchange Dublin" },
-              { img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800", tag: "Community", title: "Dublin Social Scene" },
-              { img: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800", tag: "Dining", title: "Lucky Tortoise" },
-              { img: "https://images.unsplash.com/photo-1549465220-1d8c9d9c6769?q=80&w=800", tag: "Gifting", title: "Flowers.ie Campaign" }
+              { img: "/images/c1.jpeg", tag: "Food Branding", title: "Chimac & Anjappar" },
+              { img: "/images/c2.jpeg", tag: "Fashion Story", title: "Irish Label Collaborations" },
+              { img: "/images/c3.jpeg", tag: "Lifestyle", title: "The Exchange Dublin" },
+              { img: "/images/c4.jpeg", tag: "Community", title: "Dublin Social Scene" },
+              { img: "/images/c5.jpeg", tag: "Dining", title: "Lucky Tortoise" },
+              { img: "/images/c6.jpeg", tag: "Gifting", title: "Flowers.ie Campaign" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
