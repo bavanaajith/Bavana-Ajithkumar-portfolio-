@@ -7,7 +7,7 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     plugins: [react(), tailwindcss()],
-    base: '/Bavana-Ajithkumar-portfolio-/',
+    base: '/bavana-portfolio-/',
     build: {
       outDir: 'docs',
     },
