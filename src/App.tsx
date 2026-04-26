@@ -141,7 +141,7 @@ export default function App() {
                   <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </motion.a>
                 <motion.a 
-                  href="/resume.pdf"
+                  href="/Bavana_Ajithkumar_CV__.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
