@@ -274,7 +274,6 @@ export default function App() {
               { img: "images/c3.jpeg", tag: "Lifestyle", title: "The Exchange Dublin" },
               { img: "images/c4.jpeg", tag: "Community", title: "Dublin Social Scene" },
               { img: "images/c5.jpeg", tag: "Student Exchange", title: "KRIRK university , Thailand" },
-              { img: "images/c6.jpeg", tag: "Student Exchange", title: "KRIRK university , Thailand" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
