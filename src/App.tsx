@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   Mail, 
@@ -27,7 +27,8 @@ import {
   Camera,
   Heart,
   Globe,
-  Quote
+  Quote,
+  Check
 } from 'lucide-react';
 
 import CustomCursor from './components/CustomCursor';
@@ -48,6 +49,13 @@ const staggerContainer = {
 };
 
 export default function App() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
   return (
     <div className="min-h-screen grid-bg selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
       <CustomCursor />
@@ -90,10 +98,10 @@ export default function App() {
             ))}
           </div>
           <div className="flex gap-4">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 hover:text-rose-600 transition-colors">
+            <a href="https://www.instagram.com/bee.and.beyond/" target="_blank" rel="noreferrer" className="p-2 hover:text-rose-600 transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 hover:text-blue-600 transition-colors">
+            <a href="https://www.linkedin.com/in/bavana-ajith/" target="_blank" rel="noreferrer" className="p-2 hover:text-blue-600 transition-colors">
               <Linkedin size={20} />
             </a>
           </div>
@@ -186,7 +194,7 @@ export default function App() {
 
                 <div className="relative w-full h-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] z-20 border-white border-[12px]">
                   <img 
-                    src="/images/profile.jpeg" 
+                    src="images/profile.jpeg" 
                     alt="Bavana Ajithkumar" 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -269,12 +277,12 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
             {[
-              { img: "/images/c1.jpeg", tag: "Food Branding", title: "Chimac & Anjappar" },
-              { img: "/images/c2.jpeg", tag: "Fashion Story", title: "Irish Label Collaborations" },
-              { img: "/images/c3.jpeg", tag: "Lifestyle", title: "The Exchange Dublin" },
-              { img: "/images/c4.jpeg", tag: "Community", title: "Dublin Social Scene" },
-              { img: "/images/c5.jpeg", tag: "Dining", title: "Lucky Tortoise" },
-              { img: "/images/c6.jpeg", tag: "Gifting", title: "Flowers.ie Campaign" }
+              { img: "images/c1.jpeg", tag: "Food Branding", title: "Chimac & Anjappar" },
+              { img: "images/c2.jpeg", tag: "Fashion Story", title: "Irish Label Collaborations" },
+              { img: "images/c3.jpeg", tag: "Lifestyle", title: "The Exchange Dublin" },
+              { img: "images/c4.jpeg", tag: "Community", title: "Dublin Social Scene" },
+              { img: "images/c5.jpeg", tag: "Student Exchange", title: "KRIRK university , Thailand" },
+              { img: "images/c6.jpeg", tag: "Student Exchange", title: "KRIRK university , Thailand" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -336,13 +344,34 @@ export default function App() {
                 color: "blue"
               },
               {
+                company: "MBA & Beyond, Singapore",
+                role: "Revenue & CRM Intern",
+                period: "Jun 2024 – Aug 2024",
+                desc: "Organised 500+ B2B prospects into structured outreach pipelines; delivered insightsto optimise sales and customer success initiatives.",
+                color: "blue"
+              },
+              {
+                company: " RPA Infotech, India",
+                role: "Lead Generation Intern",
+                period: "Jul 2023 – Dec 2023",
+                desc: "Increased lead conversion by ~15% through structured CRM follow-ups and segmentation strategies.",
+                color: "blue"
+              },
+              {
                 company: "TEDx Speaker",
                 role: "Invited Speaker",
                 period: "2023",
                 desc: "Presented on the intersection of Sustainability and Consumer Behaviour to 500+ attendees.",
                 color: "purple",
                 link: "https://youtu.be/hrXCrly-E3s?si=3TlmWypyWBq6VhmE"
-              }
+              },
+              {
+                company: " Tata Consultancy Services, India",
+                role: "Project Intern",
+                period: "Jun 2023 – Jul 2023",
+                desc: "* Supported data analysis and documentation for a healthcare consulting project, contributing to client reporting deliverables.",
+                color: "blue"
+              },
             ].map((exp, idx) => (
               <motion.div 
                 key={idx}
@@ -406,41 +435,73 @@ export default function App() {
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Instagram</p>
-                      <p className="text-sm sm:text-xl font-bold text-slate-900 hover:text-rose-600 transition-colors truncate">@bavana_creator</p>
+                      <p className="text-sm sm:text-xl font-bold text-slate-900 hover:text-rose-600 transition-colors truncate">@bee.and.beyond</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
-                  <input type="text" placeholder="e.g. Ajithkumar" className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900" />
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Ajithkumar" 
+                    className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    disabled={isSubmitted}
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Email Address</label>
-                  <input type="email" placeholder="email@example.com" className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900" />
+                  <input 
+                    type="email" 
+                    placeholder="email@example.com" 
+                    className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    disabled={isSubmitted}
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Inquiry Details</label>
-                  <textarea placeholder="Tell me about your project or opportunity" className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900 h-40 resize-none"></textarea>
+                  <textarea 
+                    placeholder="Tell me about your project or opportunity" 
+                    className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900 h-40 resize-none"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    disabled={isSubmitted}
+                  ></textarea>
                 </div>
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-6 bg-slate-900 hover:bg-rose-600 text-white rounded-3xl font-black text-xl transition-all shadow-2xl"
-                >
-                  Send Inquiry
-                </motion.button>
+                {isSubmitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="w-full py-6 bg-green-500 text-white rounded-3xl font-black text-xl shadow-2xl flex items-center justify-center gap-3"
+                  >
+                    <Check size={24} />
+                    Enquiry Sent!
+                  </motion.div>
+                ) : (
+                  <motion.button 
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-6 bg-slate-900 hover:bg-rose-600 text-white rounded-3xl font-black text-xl transition-all shadow-2xl"
+                  >
+                    Send Inquiry
+                  </motion.button>
+                )}
               </form>
             </div>
             
             <div className="mt-24 pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
               <p>© 2026 BAVANA AJITHKUMAR</p>
               <div className="flex gap-12 text-slate-400">
-                <a href="https://linkedin.com" className="hover:text-blue-600 transition-colors">LinkedIn</a>
-                <a href="https://instagram.com" className="hover:text-rose-600 transition-colors">Instagram</a>
-                <a href="#" className="hover:text-slate-900 transition-colors">Portfolio</a>
+                <a href="https://www.linkedin.com/in/bavana-ajith/" className="hover:text-blue-600 transition-colors">LinkedIn</a>
+                <a href="https://www.instagram.com/bee.and.beyond/" className="hover:text-rose-600 transition-colors">Instagram</a>
+                
               </div>
             </div>
           </div>
