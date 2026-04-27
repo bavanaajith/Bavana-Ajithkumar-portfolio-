@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { 
   Mail, 
@@ -27,8 +27,7 @@ import {
   Camera,
   Heart,
   Globe,
-  Quote,
-  Check
+  Quote
 } from 'lucide-react';
 
 import CustomCursor from './components/CustomCursor';
@@ -49,13 +48,6 @@ const staggerContainer = {
 };
 
 export default function App() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
   return (
     <div className="min-h-screen grid-bg selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
       <CustomCursor />
@@ -441,16 +433,13 @@ export default function App() {
                 </div>
               </div>
 
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
                   <input 
                     type="text" 
                     placeholder="e.g. Ajithkumar" 
                     className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    disabled={isSubmitted}
                   />
                 </div>
                 <div className="space-y-2">
@@ -459,9 +448,6 @@ export default function App() {
                     type="email" 
                     placeholder="email@example.com" 
                     className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    disabled={isSubmitted}
                   />
                 </div>
                 <div className="space-y-2">
@@ -469,30 +455,15 @@ export default function App() {
                   <textarea 
                     placeholder="Tell me about your project or opportunity" 
                     className="w-full px-8 py-6 bg-slate-50 border border-slate-200 rounded-3xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-bold text-slate-900 h-40 resize-none"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    disabled={isSubmitted}
                   ></textarea>
                 </div>
-                {isSubmitted ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-full py-6 bg-green-500 text-white rounded-3xl font-black text-xl shadow-2xl flex items-center justify-center gap-3"
-                  >
-                    <Check size={24} />
-                    Enquiry Sent!
-                  </motion.div>
-                ) : (
-                  <motion.button 
-                    type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-6 bg-slate-900 hover:bg-rose-600 text-white rounded-3xl font-black text-xl transition-all shadow-2xl"
-                  >
-                    Send Inquiry
-                  </motion.button>
-                )}
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-6 bg-slate-900 hover:bg-rose-600 text-white rounded-3xl font-black text-xl transition-all shadow-2xl"
+                >
+                  Send Inquiry
+                </motion.button>
               </form>
             </div>
             
